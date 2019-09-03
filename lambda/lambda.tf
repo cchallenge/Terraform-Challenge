@@ -74,10 +74,10 @@ resource "aws_iam_role_policy_attachment" "basic-exec-role" {
 
 # AWS Lambda function
 resource "aws_lambda_function" "file_check_lambda" {
-    filename = "file_check_lambda-ffc42c9e-e4cf-44f7-939c-41b55c22474d.zip"
+    filename = "file_check_lambda-64b3c683-45f7-48e8-988a-23beb8bb8a15.zip"
     function_name = "file_check_lambda"
     role = "${aws_iam_role.file_check_lambda.arn}"
-    handler = "file_check_lambda-ffc42c9e-e4cf-44f7-939c-41b55c22474d.handler"
+    handler = "file_check_lambda-64b3c683-45f7-48e8-988a-23beb8bb8a15.handler"
     runtime = "python3.7"
     timeout = 10
     source_code_hash = "${base64sha256(file("file_check_lambda-64b3c683-45f7-48e8-988a-23beb8bb8a15.zip"))}"
