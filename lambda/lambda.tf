@@ -48,7 +48,7 @@ data "aws_iam_policy_document" "s3-access-ro" {
                "s3:PutObject",
 	        "s3:GetObject",
                 "s3:DeleteObject",
-	        "s3:ListBucket",
+                "s3:ListBucket",
         ]
         resources = [
             "arn:aws:s3:::*",
@@ -74,13 +74,13 @@ resource "aws_iam_role_policy_attachment" "basic-exec-role" {
 
 # AWS Lambda function
 resource "aws_lambda_function" "file_check_lambda" {
-    filename = "file_check_lambda-64b3c683-45f7-48e8-988a-23beb8bb8a15.zip"
+    filename = "file_check_lambda.zip"
     function_name = "file_check_lambda"
     role = "${aws_iam_role.file_check_lambda.arn}"
-    handler = "file_check_lambda-64b3c683-45f7-48e8-988a-23beb8bb8a15.handler"
+    handler = "file_check_lambda.handler"
     runtime = "python3.7"
     timeout = 10
-    source_code_hash = "${base64sha256(file("file_check_lambda-64b3c683-45f7-48e8-988a-23beb8bb8a15.zip"))}"
+    source_code_hash = "${base64sha256(file("file_check_lambda.zip"))}"
 }
 
 resource "aws_lambda_permission" "allow_cloudwatch_to_call_file_check" {
