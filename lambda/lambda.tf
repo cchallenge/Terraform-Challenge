@@ -77,7 +77,7 @@ resource "aws_lambda_function" "file_check_lambda" {
     filename = "file_check_lambda.zip"
     function_name = "file_check_lambda"
     role = "${aws_iam_role.file_check_lambda.arn}"
-    handler = "file_check_lambda.handler"
+    handler = "file_check_lambda.lambda_handler"
     runtime = "python3.7"
     timeout = 10
     source_code_hash = "${base64sha256(file("file_check_lambda.zip"))}"
